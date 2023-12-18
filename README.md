@@ -9,29 +9,26 @@ Run `npm install lareferencia-widget-embed`
 
 ## Utilizar lareferencia-widget-embed.
 
-Importar "LrwPackageModule" en tu proyecto dSPACE, recomendamos importarlo en la carpeta "shared", de esta forma:
-![Alt text](image-1.png)
-![Alt text](image.png)
+Importar el modulo "LareferenciaWidgetEmbed" en tu proyecto dSPACE, recomendamos importarlo en la carpeta "shared" del proyecto dSPACE 
+"shared/shared.module.ts"
 
 De esta forma podras utilizar el componente <lib-lareferencia-widget-embed></lib-lareferencia-widget-embed> en cualquier lugar donde estes importanto el modulo "SharedModule".
-
 
 ## Elegir el widget
 
 Debes elegir el widget pasando el tipo [widgetType] en el componente, de momento solo puede utilizar:
 1. 'lrw'
 
-Por ejemplo <lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>, Puedes utilizar mas de uno, de esta forma:
+Por ejemplo `<lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>`, Puedes utilizar mas de uno, de esta forma:
 
-<lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>
-<lib-lareferencia-widget-embed [widgetType]="'otro widget'"></lib-lareferencia-widget-embed>
+`<lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>
+<lib-lareferencia-widget-embed [widgetType]="'otro widget'"></lib-lareferencia-widget-embed>`
 
 ## Configurar el o los widgets
 
 En la carpeta "assets", necesitas crear (si no la tienes) una carpeta "data", alli deberas descargar y colocar el archivo "widget.config.json"
 
-Descargar el archivo "widgetConfig.json" aquí.
-
+Descargar el archivo "widgetConfig.json" que se encuentra dentro de src/assets/data
 
 # lrw widget
 
