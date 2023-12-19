@@ -30,6 +30,8 @@ const MODULES = [
 De esta forma podras utilizar el componente
 ```<lib-lareferencia-widget-embed></lib-lareferencia-widget-embed>``` 
 en cualquier lugar donde estes importanto el modulo "SharedModule". Dicho componente debe ser colocado en los archivos .html, por ejemplo:
+
+en "src/app/item-page/simple/item-types/publication/publication.component.html"
 ```
     <ds-generic-item-page-field [item]="object"
       [fields]="['dc.publisher']"
