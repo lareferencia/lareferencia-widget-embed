@@ -9,8 +9,28 @@ Run `npm install lareferencia-widget-embed`
 
 ## Utilizar lareferencia-widget-embed.
 
-Importar el modulo "LareferenciaWidgetEmbed" en tu proyecto dSPACE, recomendamos importarlo en la carpeta "shared" del proyecto dSPACE 
-"shared/shared.module.ts"
+Importar el modulo "LareferenciaWidgetEmbedModule" en tu proyecto dSPACE, recomendamos importarlo en la carpeta "shared" del proyecto dSPACE 
+"shared/shared.module.ts" de esta forma:
+
+`import { lareferenciaWidgetEmbedModule } from 'lareferencia-widget-embed';
+
+const MODULES = [
+  CommonModule,
+  FormsModule,
+  InfiniteScrollModule,
+  NgbNavModule,
+  NgbTypeaheadModule,
+  NgbPaginationModule,
+  NgbDropdownModule,
+  NgbTooltipModule,
+  ReactiveFormsModule,
+  RouterModule,
+  DragDropModule,
+  GoogleRecaptchaModule,
+  MenuModule,
+  NgxPaginationModule,
+  lareferenciaWidgetEmbedModule,
+];`
 
 De esta forma podras utilizar el componente <lib-lareferencia-widget-embed></lib-lareferencia-widget-embed> en cualquier lugar donde estes importanto el modulo "SharedModule".
 
