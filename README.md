@@ -27,30 +27,84 @@ const MODULES = [
   ],
 ```
 
-De esta forma podras utilizar el componente <lib-lareferencia-widget-embed></lib-lareferencia-widget-embed> en cualquier lugar donde estes importanto el modulo "SharedModule".
+De esta forma podras utilizar el componente
+```<lib-lareferencia-widget-embed></lib-lareferencia-widget-embed>``` 
+en cualquier lugar donde estes importanto el modulo "SharedModule". Dicho componente debe ser colocado en los archivos .html, por ejemplo:
+```
+    <ds-generic-item-page-field [item]="object"
+      [fields]="['dc.publisher']"
+      [label]="'publication.page.publisher'">
+    </ds-generic-item-page-field>
+
+    <lib-lareferencia-widget-embed></lib-lareferencia-widget-embed>
+    
+  </div>
+  <div>
+```
 
 ## Elegir el widget
 
-Debes elegir el widget pasando el tipo [widgetType] en el componente, de momento solo puede utilizar:
+Debes elegir el widget utilizando [widgetType] en el componente, de momento solo puedes utilizar:
 1. 'lrw'
 
-Por ejemplo `<lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>`, Puedes utilizar mas de uno, de esta forma:
+Por ejemplo 
+```
+<lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>
+```
+Puedes utilizar mas de uno, de esta forma:
 
-`<lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>
-<lib-lareferencia-widget-embed [widgetType]="'otro widget'"></lib-lareferencia-widget-embed>`
+```
+<lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>
+<lib-lareferencia-widget-embed [widgetType]="'widget'"></lib-lareferencia-widget-embed>
+```
 
 ## Configurar el o los widgets
 
 En la carpeta "assets", necesitas crear (si no la tienes) una carpeta "data", alli deberas descargar y colocar el archivo "widget.config.json"
 
-Descargar el archivo "widgetConfig.json" que se encuentra dentro de src/assets/data
-[Descargar datos.json](/src/assets/data/widget.config.json)
+Descargar el archivo "widget.config.json" que se encuentra dentro de src/assets/data.
+[Descargar widget.config.json](/src/assets/data/widget.config.json)
 
 
 # lrw widget
 
 - Configurar parametros en widget.config.json 
 > Nota: Para configurar este widget debes editar unicamente los parametros dentro del objeto "lrw"
+
+```
+{
+    "lareferencia-widgets": {
+
+        "lrw": { 
+            "active": true,
+            
+            //Reemplazar lrw@x.y.z de ser necesario
+            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@1.1.5/dist/lrw.js", 
+            
+            "parameters":{
+                "widget_div_id": "usage-stats", //no modificar
+
+                "identifier_prefix": "",
+                "identifier_regex": "",
+
+                "event_labels": {   
+                    "view": "[[Vistas]]",
+                    "download": "[[Descargas]]",
+                    "outlink": "[[Enlaces]]"
+                },
+                "scope_labels": {
+                    "L": "[[LA Referencia]]",
+                    "N": "[[Nombre nodo nacional]]",
+                    "R": "[[Nombre repositorio]]"
+                },
+                "country": "[[country]]",
+                "national_source": "[[SITEID::59]]",
+                "repository_source": "[[OPENDOAR::1329]]"
+            }
+        }
+    }
+}
+```
 
 - El parametro "widget_url" contiene la url, donde debera ir la ultima version.
 La version tiene la forma X.Y.Z y debe ser actualizada en el parametro "widget_url"
@@ -74,7 +128,7 @@ Identificador del agregador regional, debe consultar esta lista para obtenerlos.
 Identificador del repositorio, se forma con el prefijo OPENDOAR:: concatenado con el número identificatorio en OpenDOAR. Ejemplo: OPENDOAR::1234
 
 - item oai identifier:
-- 
+
 Para construir el oai identifier a partir de la URL del item en DSpace, se requieren dos variables: identifier_prefix y identifier_regex.
 
 La variable identifier_prefix corresponde a la forma en que DSpace está configurado para generar los oai identifiers. Este valor puede consultarlo en el archivo /config/modules/oai.cfg en la variable oai.identifier.prefix.
