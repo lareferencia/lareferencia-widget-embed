@@ -44,7 +44,7 @@ Por ejemplo `<lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferen
 En la carpeta "assets", necesitas crear (si no la tienes) una carpeta "data", alli deberas descargar y colocar el archivo "widget.config.json"
 
 Descargar el archivo "widgetConfig.json" que se encuentra dentro de src/assets/data
-[Descargar datos.json]('/src/assets/data/widget.config.json')
+[Descargar datos.json](/src/assets/data/widget.config.json)
 
 
 # lrw widget
