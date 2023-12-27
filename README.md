@@ -84,7 +84,7 @@ Por ejemplo, si se desea desplegar el widget luego del listado de autores, el ht
 En la carpeta "assets", necesitas crear (si no la tienes) una carpeta "data", alli deberas descargar y colocar el archivo "widget.config.json"
 
 Descargar el archivo "widgetConfig.json" aquí.
-[Desgargar](src/assets/data/widget.config.json)
+[Descargar](src/assets/data/widget.config.json)
 
 
 # Configurar 'lrw' widget
