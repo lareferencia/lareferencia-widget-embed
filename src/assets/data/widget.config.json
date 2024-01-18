@@ -3,7 +3,7 @@
 
         "lrw": { 
             "active": true,
-            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@1.1.5/dist/lrw.js",
+            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@1.1.6/dist/lrw.js",
             "parameters":{
                 "widget_div_id": "usage-stats",
                 
