@@ -33,9 +33,6 @@ lareferenciaWidgetEmbedModule,
 ];
 ```
 
-![Alt text](image-1.png)
-![Alt text](image.png)
-
 De esta forma podras utilizar el componente <lib-lareferencia-widget-embed></lib-lareferencia-widget-embed> en cualquier template html lugar donde estes importanto el modulo "SharedModule".
 
 ## Elegir e insertar el widget 
