@@ -4,9 +4,10 @@ Libreria generada con [Angular CLI](https://github.com/angular/angular-cli) vers
 
 ## Instalar en dSPACE
 
-Ejecutar `npm install lareferencia-widget-embed` dentro del directorio del código fuente de angular (i.e. dspace-angular-dspace-7.6)
+El primer paso es instalar (No copiar) el paquete "lareferencia-widget-embed" con el siguiente comando:
+Ejecutar `npm install lareferencia-widget-embed` dentro del directorio del código fuente de angular (i.e. /dspace-angular-dspace-7.6), es decir el directorio raiz del codigo angular.
 > Note: Si ves errores de dependencias puedes usar `npm install lareferencia-widget-embed --force` o intentar arreglar los errores, esta libreria solo tiene como dependecias angular/core, cualquier otro error probablemente sea de dSPACE por lo cual recomendamos utilizar --force en este caso.
-De esta forma la carpeta lareferencia-widget-embed quedaría instalada dentro de dspace-angular-dspace-7.6/node_modules
+De esta forma la carpeta lareferencia-widget-embed quedaría instalada dentro de dspace-angular-dspace-7.6/node_modules. Si navegas a la carpeta node_modules, deberias encontrar una carpeta llamada "lareferencia-widget-embed"
 
 ## Utilizar lareferencia-widget-embed.
 
@@ -32,9 +33,6 @@ NgxPaginationModule,
 lareferenciaWidgetEmbedModule,
 ];
 ```
-
-![Alt text](image-1.png)
-![Alt text](image.png)
 
 De esta forma podras utilizar el componente <lib-lareferencia-widget-embed></lib-lareferencia-widget-embed> en cualquier template html lugar donde estes importanto el modulo "SharedModule".
 
@@ -81,7 +79,7 @@ Por ejemplo, si se desea desplegar el widget luego del listado de autores, el ht
 
 ## Configurar el o los widgets
 
-En la carpeta "assets", necesitas crear (si no la tienes) una carpeta "data", alli deberas descargar y colocar el archivo "widget.config.json"
+Dentro de la carpeta "assets" que se encuentra dentro del proyecto angular (dentro de /src), necesitas crear una carpeta y llamarla "data". Luego deberas descargar y colocar el archivo "widget.config.json" alli dentro.
 
 Descargar el archivo "widgetConfig.json" aquí.
 [Descargar](src/assets/data/widget.config.json)
@@ -184,4 +182,10 @@ Ejemplo de configuración completa:
 }
 
 ```
+
+## Modificar el widget sin re-compilar
+
+Puedes realizar cambios en la configuracion de el o los widgets modificando el archivo widget.config.json. Para realizar dichos cambios sin tener que volver a compilar debes realizar los cambios en el archivo dentro de src/assets/data/widget.config.json y tambien dentro de la carpeta dist/server/assets/data/widget.config.json. Si no se aprecian los cambios, Puedes recargar el navegador o borrar el cache del navegador.
+
+
 
