@@ -1,6 +1,7 @@
 # Lareferencia-widget-embed
 
-Libreria generada con [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+Libreria generada con [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+> Nota: Si bien el widget esta creado sobre Angular 13.3.0, el mismo carece de dependencias por lo cual deberia funcionar en cualquier version de Angular
 
 ## Instalar en dSPACE
 
