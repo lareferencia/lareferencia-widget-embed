@@ -22,7 +22,7 @@
                     "N": "[[Nombre nodo nacional]]",
                     "R": "[[Nombre repositorio]]"
                 },
-                "country": "AR",
+                "country": "[[country]]",
                 "national_source": "[[SITEID::59]]",
                 "repository_source": "[[OPENDOAR::1329]]"
             }
