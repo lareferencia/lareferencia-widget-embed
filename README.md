@@ -163,7 +163,7 @@ Ejemplo de configuración completa:
                 "widget_div_id": "usage-stats",
                 "identifier_meta_field": "citation_abstract_html_url",
                 "identifier_prefix": "oai:repositorio.utn.ac.cr:20.500.13077/",
-                "identifier_regex": "https://hdl.handle.net/[0-9\.]+/([0-9]+)/?",
+                "identifier_regex": "https://hdl.handle.net/[0-9\\.]+/([0-9]+)/?",
                 "event_labels": {  
                     "view": "Vistas",
                     "download": "Descargas",
