@@ -5,7 +5,7 @@
             "active": true,
             "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@1.1.6/dist/lrw.js",
             "parameters":{
-                "widget_div_id": "usage-stats",
+                "widget_div_id": "lrw-widget",
                 
                 "identifier": "oai:sedici.unlp.edu.ar:10915/31664",
                 "identifier_meta_field": "eprints.eprintid",
@@ -13,18 +13,25 @@
                 "identifier_regex": "",
 
                 "event_labels": {   
-                    "view": "[[Vistas]]",
-                    "download": "[[Descargas]]",
-                    "outlink": "[[Enlaces]]"
+                    "views": "[[Vistas]]",
+                    "downloads": "[[Descargas]]",
+                    "outlinks": "[[Enlaces]]",
+                    "conversions": "conversiones"
                 },
                 "scope_labels": {
                     "L": "[[LA Referencia]]",
                     "N": "[[Nombre nodo nacional]]",
-                    "R": "[[Nombre repositorio]]"
+                    "R": "[[Nombre repositorio]]",
+                    "ALL": "Eventos totales"
                 },
-                "country": "[[country]]",
+                "country": "AR",
                 "national_source": "[[SITEID::59]]",
-                "repository_source": "[[OPENDOAR::1329]]"
+                "repository_source": "[[OPENDOAR::1329]]",
+                "styles":{
+                    "chart":{
+                        "height": "300px"
+                    }
+                }
             }
         },
         "lrhw":{

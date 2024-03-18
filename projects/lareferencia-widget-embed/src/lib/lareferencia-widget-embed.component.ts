@@ -31,7 +31,8 @@ export class lareferenciaWidgetEmbedComponent implements OnInit {
   window[this.widgetType] = { parameters: widget_data.parameters }
 
   const widget = document.createElement('script');
-  widget.src = widget_data.widget_url;
+  widget.src = './assets/data/chunks/historic-widget.js';
+  widget.type = 'module';
     
   const container = document.getElementById('lareferencia');
   const containerId = `lareferencia-${widget_data.parameters.widget_div_id}`
