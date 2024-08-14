@@ -3,28 +3,22 @@
 
         "lrw": { 
             "active": true,
-            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@1.1.6/dist/lrw.js",
+            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@2.0.6/dist/lrw.js",
             "parameters":{
                 "widget_div_id": "usage-stats",
                 
-                "identifier": "oai:sedici.unlp.edu.ar:10915/31664",
-                "identifier_meta_field": "eprints.eprintid",
+                "identifier_meta_field": "",
                 "identifier_prefix": "",
                 "identifier_regex": "",
 
-                "event_labels": {   
-                    "view": "[[Vistas]]",
-                    "download": "[[Descargas]]",
-                    "outlink": "[[Enlaces]]"
-                },
                 "scope_labels": {
-                    "L": "[[LA Referencia]]",
-                    "N": "[[Nombre nodo nacional]]",
-                    "R": "[[Nombre repositorio]]"
-                },
-                "country": "[[country]]",
-                "national_source": "[[SITEID::59]]",
-                "repository_source": "[[OPENDOAR::1329]]"
+                    "N": "Nodo Nacional",
+                    "R": "Repositorio"
+                  },
+                  
+                  "country": "Código de pais",
+                  "repository_source": "",
+                  "lang": "es"
             }
         },
         "lrhw":{
