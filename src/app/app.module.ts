@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { lareferenciaWidgetEmbedModule } from 'lareferencia-widget-embed';
+import { lareferenciaWidgetEmbedComponent } from 'lareferencia-widget-embed';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { lareferenciaWidgetEmbedModule } from 'lareferencia-widget-embed';
   ],
   imports: [
     BrowserModule,
-    lareferenciaWidgetEmbedModule
+    lareferenciaWidgetEmbedComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

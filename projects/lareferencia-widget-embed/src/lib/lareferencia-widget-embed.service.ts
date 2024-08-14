@@ -6,13 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class lareferenciaWidgetEmbedService {
-
   private widgetConfigUrl = './assets/data/widget.config.json';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getWidgetConfig():Observable<any> {
+  getWidgetConfig(): Observable<any> {
     return this.http.get(this.widgetConfigUrl);
   }
-
 }
