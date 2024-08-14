@@ -1,12 +1,13 @@
 # Lareferencia-widget-embed
 
-Libreria generada con [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
-> Nota: Si bien el widget esta creado sobre Angular 13.3.0, el mismo carece de dependencias por lo cual deberia funcionar en cualquier version de Angular
+Libreria generada con [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+> Nota: Si bien el widget esta creado sobre Angular 15.2.0, el mismo carece de dependencias por lo cual deberia funcionar en cualquier versión de Angular
 
 ## Instalar en dSPACE
 
 El primer paso es instalar (No copiar) el paquete "lareferencia-widget-embed" con el siguiente comando:
 Ejecutar `npm install lareferencia-widget-embed` dentro del directorio del código fuente de angular (i.e. /dspace-angular-dspace-7.6), es decir el directorio raiz del codigo angular.
+
 > Note: Si ves errores de dependencias puedes usar `npm install lareferencia-widget-embed --force` o intentar arreglar los errores, esta libreria solo tiene como dependecias angular/core, cualquier otro error probablemente sea de dSPACE por lo cual recomendamos utilizar --force en este caso.
 De esta forma la carpeta lareferencia-widget-embed quedaría instalada dentro de dspace-angular-dspace-7.6/node_modules. Si navegas a la carpeta node_modules, deberias encontrar una carpeta llamada "lareferencia-widget-embed"
 
@@ -99,9 +100,9 @@ Por ejemplo:
 ```
 cdn.jsdelivr.net/gh/lareferencia/lrw@X.Y.Z/dist/lrw.js
 ```
-reemplazando X.Y.Z (por ejemplo 1.1.6) quedaria: 
+reemplazando X.Y.Z (por ejemplo 2.0.6) quedaria: 
 ```
-cdn.jsdelivr.net/gh/lareferencia/lrw@1.1.6/dist/lrw.js
+https://cdn.jsdelivr.net/gh/lareferencia/lrw@2.0.6/dist/lrw.js
 ```
 > Nota: solo debes modificar X.Y.Z luego de la @
 
@@ -117,14 +118,10 @@ Nombre que aparecerá describiendo los eventos del repositorio, debe ser corto p
     - country:
 ISO dos digitos del país de repositorio. Ejemplos: AR,BR,ES,UY
 
-    - Nacional source:
-Identificador del agregador regional, debe consultar esta lista para obtenerlos.
-Ejemplo SITEID::59
-
     - Repository source:
 Identificador del repositorio, se forma con el prefijo OPENDOAR:: concatenado con el número identificatorio en OpenDOAR. Ejemplo: OPENDOAR::1234
 
-3. Configurar identifier_prefix, identifier_meta_field e identifier_regex
+1. Configurar identifier_prefix, identifier_meta_field e identifier_regex
 
 - DSpace le asigna a cada item depositado un "oai identifier".  Éste es un identificador único utilizado en las solicitudes OAI-PMH para extraer los metadatos del ítem. La sintaxis de dicho identificador consta de tres partes:
 
@@ -158,24 +155,19 @@ Ejemplo de configuración completa:
     "lareferencia-widgets": {
         "lrw": {
             "active": true,
-            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@1.1.5/dist/lrw.js",            
+            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@2.0.6/dist/lrw.js",    
+                    
             "parameters":{
                 "widget_div_id": "usage-stats",
                 "identifier_meta_field": "citation_abstract_html_url",
                 "identifier_prefix": "oai:repositorio.utn.ac.cr:20.500.13077/",
                 "identifier_regex": "https://hdl.handle.net/[0-9\\.]+/([0-9]+)/?",
-                "event_labels": {  
-                    "view": "Vistas",
-                    "download": "Descargas",
-                    "outlink": "Enlaces"
-                },
+
                 "scope_labels": {
-                    "L": "LA Referencia",
                     "N": "Kímuk",
                     "R": "Repositorio UTN"
                 },
                 "country": "CR",
-                "national_source": "SITEID::56",
                 "repository_source": "OPENDOAR::4680"
             }
         }
