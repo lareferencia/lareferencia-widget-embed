@@ -2,8 +2,9 @@
 
 Libreria generada con [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 > Nota: Si bien el widget esta creado sobre Angular 15.2.0, el mismo carece de dependencias por lo cual deberia funcionar en cualquier versión de Angular
+> Nota: En el apartado "Configurar lrw widget" se encuentra todo lo necesario para configurar el widget que muestra estadisticas del item y en el apartado "configurar lrhw widget" se encuentra lo necesario para configurar el widget que muestra estadisticas de el o los repositorios.
 
-## Instalar en dSPACE
+## Instalar en dSPACE o proyecto Angular
 
 El primer paso es instalar (No copiar) el paquete "lareferencia-widget-embed" con el siguiente comando:
 Ejecutar `npm install lareferencia-widget-embed` dentro del directorio del código fuente de angular (i.e. /dspace-angular-dspace-7.6), es decir el directorio raiz del codigo angular.
