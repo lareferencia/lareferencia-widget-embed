@@ -1,54 +1,41 @@
 {
     "lareferencia-widgets": {
-
-        "lrw": { 
+        "lrw": {
             "active": true,
-            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@2.0.6/dist/lrw.js",
-            "parameters":{
+            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@2.0.7/dist/lrw.js",
+            "parameters": {
                 "widget_div_id": "usage-stats",
-                
-                "identifier_meta_field": "",
-                "identifier_prefix": "",
-                "identifier_regex": "",
-
+                "identifier": "oai:sedici.unlp.edu.ar:10915/113959",
+                "identifier_meta_field": "citation_abstract_html_url",
+                "identifier_prefix": "oai:repositorio.utn.ac.cr:20.500.13077/",
+                "identifier_regex": "https://hdl.handle.net/[0-9\\.]+/([0-9]+)/?",
                 "scope_labels": {
-                    "N": "Nodo Nacional",
-                    "R": "Repositorio"
-                  },
-                  
-                  "country": "Código de pais",
-                  "repository_source": "",
-                  "lang": "es"
+                    "N": "Kímuk",
+                    "R": "Repositorio UTN"
+                },
+                "country": "CR",
+                "repository_source": "OPENDOAR::1329"
             }
         },
-        "lrhw":{
+        
+        "lrhw": {
             "active": true,
-            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrhw@0.0.8/dist/historic-widget.js",
-            "parameters":{
+            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.0.8/dist/assets/chunks/historic-widget.js",
+            "parameters": {
                 "widget_div_id": "lrhw-widget",
-
-                "event_labels": {
-                    "view": "Vistas",
-                    "download": "Descargas",
-                    "outlink": "Enlaces"
+                "repositories_list": [
+                    {
+                        "label": "[[Nombre del repositorio]]",
+                        "value": "opendoar::1329"
+                    }
+                ],
+                "default_repository": {
+                    "label": "[[Nombre del repositorio]]",
+                    "value": "opendoar::1329"
                 },
                 "scope_labels": {
-                    "L": "LA Referencia",
-                    "N": "Nodo Nacional",
-                    "R": "Repositorio"
-                },
-                "country": "AR",
-                "national_source": "SITEID::59",
-                "repository_source": "OPENDOAR::1329",
-                
-                "preview": true,
-
-                "styles":{
-                    "chart":{
-                        "height": "300px"
-                    }
+                    "N": "Nombre Nodo Nacional"
                 }
-            
             }
         }
     }
