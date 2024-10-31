@@ -5,16 +5,16 @@
             "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@2.0.7/dist/lrw.js",
             "parameters": {
                 "widget_div_id": "usage-stats",
-                "identifier": "oai:sedici.unlp.edu.ar:10915/113959",
-                "identifier_meta_field": "citation_abstract_html_url",
-                "identifier_prefix": "oai:repositorio.utn.ac.cr:20.500.13077/",
+                "identifier": "",
+                "identifier_meta_field": "",
+                "identifier_prefix": "",
                 "identifier_regex": "https://hdl.handle.net/[0-9\\.]+/([0-9]+)/?",
                 "scope_labels": {
-                    "N": "Kímuk",
-                    "R": "Repositorio UTN"
+                    "N": "",
+                    "R": ""
                 },
-                "country": "CR",
-                "repository_source": "OPENDOAR::1329"
+                "country": "",
+                "repository_source": ""
             }
         },
         
@@ -25,13 +25,13 @@
                 "widget_div_id": "lrhw-widget",
                 "repositories_list": [
                     {
-                        "label": "[[Nombre del repositorio]]",
-                        "value": "opendoar::1329"
+                        "label": "Nombre del repositorio",
+                        "value": "source id"
                     }
                 ],
                 "default_repository": {
-                    "label": "[[Nombre del repositorio]]",
-                    "value": "opendoar::1329"
+                    "label": "Nombre del repositorio",
+                    "value": "source id"
                 },
                 "scope_labels": {
                     "N": "Nombre Nodo Nacional"
