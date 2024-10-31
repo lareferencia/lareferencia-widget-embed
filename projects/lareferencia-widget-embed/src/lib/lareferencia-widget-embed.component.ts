@@ -27,11 +27,17 @@ export class lareferenciaWidgetEmbedComponent implements OnInit {
   };
 
   resultHandler(widget_data: any){
-    
+  console.log('widget type', this.widgetType)
+  console.log('widget data', widget_data)
+
   window[this.widgetType] = { parameters: widget_data.parameters }
 
   const widget = document.createElement('script');
   widget.src = widget_data.widget_url;
+  if (this.widgetType === "lrhw") {
+    widget.type = "module";
+  }
+  console.log('widget', widget )
     
   const container = document.getElementById('lareferencia');
   const containerId = `lareferencia-${widget_data.parameters.widget_div_id}`
