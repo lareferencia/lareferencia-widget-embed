@@ -13,7 +13,7 @@ De esta forma la carpeta lareferencia-widget-embed quedaría instalada dentro de
 
 ## Utilizar lareferencia-widget-embed.
 
-Importar "lareferenciaWidgetEmbedModule" en tu proyecto dSPACE, recomendamos importarlo en shared.module.ts en la carpeta "shared", el cual deberia encontrarse en src/app/shared/shared.module.ts. Realizar la importación de esta forma:
+Importar "lareferenciaWidgetEmbedModule" en tu proyecto dSPACE (o cualquier proyecto Angular), recomendamos importarlo en shared.module.ts en la carpeta "shared", el cual deberia encontrarse en src/app/shared/shared.module.ts. Realizar la importación de esta forma:
 ```
 import { lareferenciaWidgetEmbedModule } from 'lareferencia-widget-embed';
 
@@ -32,7 +32,7 @@ DragDropModule,
 GoogleRecaptchaModule,
 MenuModule,
 NgxPaginationModule,
-lareferenciaWidgetEmbedModule,
+lareferenciaWidgetEmbedModule,  <--------- Aqui
 ];
 ```
 
@@ -40,13 +40,15 @@ De esta forma podras utilizar el componente <lib-lareferencia-widget-embed></lib
 
 ## Elegir e insertar el widget 
 
-Debes elegir el widget pasando el tipo [widgetType] en el componente, de momento solo puedes utilizar 'lrw'
+Debes elegir el widget pasando el tipo [widgetType] en el componente, "lrw" para el widget que muestras las estadisticas, o "lrhw" para el widget dashboard que muestra las estadisticas del respositorio o Nodo.
 
 Por ejemplo:
 ```
 <lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>
+o
+<lib-lareferencia-widget-embed [widgetType]="'lrhw'"></lib-lareferencia-widget-embed>
 ```
-## Insertar el widget en la vista sencilla del ítem
+## Insertar el widget en la vista sencilla del ítem (Para usuarios dSpace
 DSpace 7 ofrece la posibilidad de organizar el repositorio en colecciones de ítems regulares (como los de las versiones anteriores) e ítems de tipo entidad. Las plantillas para modificar la forma en la que se muestran los metadatos en su vista sencilla se encuentran en el directorio[temaHabilitado]/item-page/simple/item-types
 
 Si se quiere modificar la vista de la entidad de tipo publicación, el widget debe insertarse en el archivo 
@@ -86,7 +88,7 @@ Dentro de la carpeta "assets" que se encuentra dentro del proyecto angular (dent
 Descargar el archivo "widgetConfig.json" aquí.
 [Descargar](src/assets/data/widget.config.json)
 
-En este archivo json encontraras todos los parametros configurables para los widgets.
+En este archivo .json encontraras todos los parametros configurables para los widgets.
 
 
 # Configurar 'lrw' widget
@@ -173,6 +175,61 @@ Ejemplo de configuración completa:
         }
     }
 }
+
+```
+
+# Configurar 'lrhw' widget.
+
+Configurar parametros en widget.config.json 
+> Nota: Para configurar este widget debes editar unicamente los parametros dentro del objeto "lrhw"
+
+1. El parametro "widget_url" contiene la url, donde debera ir la ultima version.
+La version tiene la forma X.Y.Z y debe ser actualizada en el parametro "widget_url"
+Por ejemplo:
+```
+https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.0.8/dist/assets/chunks/historic-widget.js
+```
+reemplazando X.Y.Z (por ejemplo 1.0.8) quedaria: 
+```
+https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.0.8/dist/assets/chunks/historic-widget.js
+```
+> Nota: solo debes modificar X.Y.Z luego de la @
+
+2. Donde se muestra [[expresion]] reemplazar quitando los [[]]. 
+Significado de cada parametro:
+  
+    - repositories_list:
+Lista de repositorios que queremos exhibir en el dashboard, cada repositorio tiene un parametro "label" donde colocamos el nombre, y el parametro "value" donde colocamos el source, por ejemplo "opendoar::1329", en caso de querer mostrar solo un repositorio, colocar solo uno dentro del arreglo.
+
+    - default_repository:
+El dashboard posee un selector para cambiar de repositorios en tiempo real, en este parametro colocamos el repositorio por defecto, es decir el que se va a mostrar primero al entrar por primera vez. Por otro lado si tenemos solo 1 repositorio, colocarlo aqui y tambien en "repositories_list".
+
+    - scope_labels:
+El parametro "N" hace referencia al nombre del nodo nacional al que pertenecen los repositorios. Si estas utilizando este dashboard directamente para un nodo nacional en lugar de uno o mas repositorios, dejar el parametro como "Nodo Nacional".
+
+
+Ejemplo de configuración completa:
+```
+"lrhw": {
+            "active": true,
+            "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.0.8/dist/assets/chunks/historic-widget.js",
+            "parameters": {
+                "widget_div_id": "lrhw-widget",
+                "repositories_list": [
+                    {
+                        "label": "[[Nombre del repositorio]]",
+                        "value": "opendoar::1329"
+                    }
+                ],
+                "default_repository": {
+                    "label": "[[Nombre del repositorio]]",
+                    "value": "opendoar::1329"
+                },
+                "scope_labels": {
+                    "N": "Nombre Nodo Nacional"
+                }
+            }
+        }
 
 ```
 
