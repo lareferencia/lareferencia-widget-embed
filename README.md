@@ -181,8 +181,10 @@ Ejemplo de configuración completa:
 ```
 
 # Configurar 'lrhw' widget.
-> Nota: Es posible colocar los datos necesarios directamente en el componente, en lugar de utilizar el archivo json de configuracion. Si no se hiciese de esta forma, el widget por defecto utiliza la configuracion del archivo .json
-Configurar parametros en widget.config.json 
+> Nota: Es posible colocar la configuracion necesaria directamente en el componente (ver al final de la seccion), en lugar de utilizar el archivo json de configuracion. En caso de no hacerlo esta forma, el widget por defecto utiliza la configuracion del archivo .json
+
+Configurar parametros en widget.config.json
+
 > Nota: Para configurar este widget debes editar unicamente los parametros dentro del objeto "lrhw"
 
 1. El parametro "widget_url" contiene la url, donde debera ir la ultima version.
@@ -232,6 +234,24 @@ Ejemplo de configuración completa:
                 }
             }
         }
+
+```
+
+### Colocar directamente en el componente la configuracion:
+1. widgetType: Nombre del widget, en este caso siempre lrhw
+2. node_name: Nombre del nodo al que pertenece el repositorio
+3. repositories_list: Array de objetos, obligatoriamente un label (nombre del repositorio) y un value (source del repositorio)
+4. default_repository: Objeto con un label y un value, igual que en repositories_list. El widget tiene un dropdown para mostrar la lista de repositorios, aqui se coloca el que quieres que sea por defecto, el mismo tambien debe estar incluido en el array de repositories_list, incluso aunque sea el unico.
+
+Ejemplo de configuracion:
+```
+
+<lib-lareferencia-widget-embed 
+    [widgetType]="'lrhw'" 
+    [node_name]="'name'"
+    [repositories_list]="[{label:'name', value:'value'}]"
+    [default_repository]="{label:'name', value:'value'}"
+></lib-lareferencia-widget-embed>
 
 ```
 
