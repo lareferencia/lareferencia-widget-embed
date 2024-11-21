@@ -50,7 +50,7 @@ Por ejemplo:
 o
 <lib-lareferencia-widget-embed [widgetType]="'lrhw'"></lib-lareferencia-widget-embed>
 ```
-## Insertar el widget en la vista sencilla del ítem (Para usuarios dSpace
+## Insertar el widget en la vista sencilla del ítem (Para usuarios dSpace)
 DSpace 7 ofrece la posibilidad de organizar el repositorio en colecciones de ítems regulares (como los de las versiones anteriores) e ítems de tipo entidad. Las plantillas para modificar la forma en la que se muestran los metadatos en su vista sencilla se encuentran en el directorio[temaHabilitado]/item-page/simple/item-types
 
 Si se quiere modificar la vista de la entidad de tipo publicación, el widget debe insertarse en el archivo 
@@ -181,7 +181,7 @@ Ejemplo de configuración completa:
 ```
 
 # Configurar 'lrhw' widget.
-
+> Nota: Es posible colocar los datos necesarios directamente en el componente, en lugar de utilizar el archivo json de configuracion. Si no se hiciese de esta forma, el widget por defecto utiliza la configuracion del archivo .json
 Configurar parametros en widget.config.json 
 > Nota: Para configurar este widget debes editar unicamente los parametros dentro del objeto "lrhw"
 
