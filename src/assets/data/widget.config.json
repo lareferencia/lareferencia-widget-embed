@@ -5,7 +5,7 @@
             "widget_url": "https://cdn.jsdelivr.net/gh/lareferencia/lrw@2.0.7/dist/lrw.js",
             "parameters": {
                 "widget_div_id": "usage-stats",
-                "identifier": "",
+                "identifier": "oai:sedici.unlp.edu.ar:10915/113959",
                 "identifier_meta_field": "",
                 "identifier_prefix": "",
                 "identifier_regex": "https://hdl.handle.net/[0-9\\.]+/([0-9]+)/?",
