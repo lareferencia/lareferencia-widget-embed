@@ -237,7 +237,7 @@ Ejemplo de configuración completa:
 
 ```
 
-### Colocar directamente en el componente la configuracion:
+### Colocar la configuracion directamente en el componente:
 1. widgetType: Nombre del widget, en este caso siempre lrhw
 2. node_name: Nombre del nodo al que pertenece el repositorio
 3. repositories_list: Array de objetos, obligatoriamente un label (nombre del repositorio) y un value (source del repositorio)
@@ -254,6 +254,7 @@ Ejemplo de configuracion:
 ></lib-lareferencia-widget-embed>
 
 ```
+Vinculando estos datos con nuestro archivo .ts es posible realizar una configuracion dinamica del widget de repositorios.
 
 ## Modificar el widget sin re-compilar
 
