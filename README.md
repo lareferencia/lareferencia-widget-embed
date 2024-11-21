@@ -181,7 +181,7 @@ Ejemplo de configuración completa:
 ```
 
 # Configurar 'lrhw' widget.
-> Nota: Es posible colocar la configuracion necesaria directamente en el componente (ver al final de la seccion), en lugar de utilizar el archivo json de configuracion. En caso de no hacerlo esta forma, el widget por defecto utiliza la configuracion del archivo .json
+> Nota: Es posible colocar la configuracion necesaria directamente en el componente, a excepción del CDN, (ver al final de la seccion), en lugar de utilizar el archivo json de configuracion. En caso de no hacerlo esta forma, el widget por defecto utiliza la configuracion del archivo .json
 
 Configurar parametros en widget.config.json
 
@@ -238,6 +238,9 @@ Ejemplo de configuración completa:
 ```
 
 ### Colocar la configuracion directamente en el componente:
+
+> Nota: Antes de realizar esta configuracion, asegurate de tener el archivo .json (ver mas arriba) para que el widget pueda acceder al CDN.
+
 1. widgetType: Nombre del widget, en este caso siempre lrhw
 2. node_name: Nombre del nodo al que pertenece el repositorio
 3. repositories_list: Array de objetos, obligatoriamente un label (nombre del repositorio) y un value (source del repositorio)
