@@ -1,131 +1,120 @@
 # Lareferencia-widget-embed
 
-Libreria generada con [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
-> Nota: Si bien el widget esta creado sobre Angular 15.2.0, el mismo carece de dependencias por lo cual deberia funcionar en cualquier versión de Angular.
+Librería generada con [Angular CLI](https://github.com/angular/angular-cli) versión 15.2.0.
 
-> Nota: En el apartado "Configurar lrw widget" se encuentra todo lo necesario para configurar el widget que muestra estadisticas del item y en el apartado "configurar lrhw widget" se encuentra lo necesario para configurar el widget que muestra estadisticas de el o los repositorios.
+> **Nota:** Si bien el widget está creado sobre Angular 15.2.0, el mismo carece de dependencias por lo cual debería funcionar en cualquier versión de Angular.
+>
+> **Nota:** En el apartado "Configurar lrw widget" se encuentra todo lo necesario para configurar el widget que muestra estadísticas del ítem y en el apartado "Configurar lrhw widget" se encuentra lo necesario para configurar el widget que muestra estadísticas de el o los repositorios.
 
-## Instalar en dSPACE o proyecto Angular
+---
 
-El primer paso es instalar (No copiar) el paquete "lareferencia-widget-embed" con el siguiente comando:
-Ejecutar `npm install lareferencia-widget-embed` dentro del directorio del código fuente de angular (i.e. /dspace-angular-dspace-7.6), es decir el directorio raiz del codigo angular.
+## 1. Instalación en dSPACE o proyecto Angular
+La instalacion es un poco diferente a partir de DSpace 8 (ver mas abajo).
 
-> Note: Si ves errores de dependencias puedes usar `npm install lareferencia-widget-embed --force` o intentar arreglar los errores, esta libreria solo tiene como dependecias angular/core, cualquier otro error probablemente sea de dSPACE por lo cual recomendamos utilizar --force en este caso.
-De esta forma la carpeta lareferencia-widget-embed quedaría instalada dentro de dspace-angular-dspace-7.6/node_modules. Si navegas a la carpeta node_modules, deberias encontrar una carpeta llamada "lareferencia-widget-embed"
+El primer paso es instalar el paquete `lareferencia-widget-embed` con el siguiente comando:
 
-## Utilizar lareferencia-widget-embed.
-
-Importar "lareferenciaWidgetEmbedModule" en tu proyecto dSPACE (o cualquier proyecto Angular), recomendamos importarlo en shared.module.ts en la carpeta "shared", el cual deberia encontrarse en src/app/shared/shared.module.ts. Realizar la importación de esta forma:
+Ejecutar dentro del directorio raíz del código fuente de angular (ej. `/dspace-angular`):
+```bash
+npm install lareferencia-widget-embed
 ```
+
+> **Nota:** Si ves errores de dependencias puedes usar `npm install lareferencia-widget-embed --force`. Esta librería solo tiene como dependencias `@angular/core`, cualquier otro error probablemente sea de discrepancias en la versión de dSPACE.
+> Al finalizar, deberías encontrar la carpeta `lareferencia-widget-embed` dentro de `node_modules`.
+
+---
+
+## 2. Configuración e Integración
+
+Dependiendo de tu versión de DSpace, la forma de importar el módulo varía:
+
+### DSpace 7 (Uso de Módulos)
+En DSpace 7 se recomienda importar `lareferenciaWidgetEmbedModule` en el archivo `shared.module.ts` (ubicado generalmente en `src/app/shared/shared.module.ts`).
+
+```typescript
 import { lareferenciaWidgetEmbedModule } from 'lareferencia-widget-embed';
 
 const MODULES = [
-CommonModule,
-FormsModule,
-InfiniteScrollModule,
-NgbNavModule,
-NgbTypeaheadModule,
-NgbPaginationModule,
-NgbDropdownModule,
-NgbTooltipModule,
-ReactiveFormsModule,
-RouterModule,
-DragDropModule,
-GoogleRecaptchaModule,
-MenuModule,
-NgxPaginationModule,
-lareferenciaWidgetEmbedModule,  <--------- Aqui
+  // ... otros módulos
+  lareferenciaWidgetEmbedModule,
 ];
 ```
 
-De esta forma podras utilizar el componente <lib-lareferencia-widget-embed></lib-lareferencia-widget-embed> en cualquier template html lugar donde estes importanto el modulo "SharedModule".
+De esta forma podrás utilizar el componente `<lib-lareferencia-widget-embed></lib-lareferencia-widget-embed>` en cualquier template HTML donde estés importando el módulo `SharedModule`.
 
-## Elegir e insertar el widget 
+### DSpace 8 en adelante (Uso de Standalone Components)
+A partir de DSpace 8, los componentes son **Standalone**. Esto significa que debes importar el módulo directamente en el arreglo `imports` de cada componente donde desees utilizarlo. (por ejemplo publication.component.ts)
+>recuerda colocar standalone: true,
 
-Debes elegir el widget pasando el tipo [widgetType] en el componente, "lrw" para el widget que muestras las estadisticas, o "lrhw" para el widget dashboard que muestra las estadisticas del respositorio o Nodo.
+```typescript
+import { lareferenciaWidgetEmbedModule } from 'lareferencia-widget-embed';
 
-Por ejemplo:
+@Component({
+  // ...
+  standalone: true,
+  imports: [
+    // ... otros módulos y componentes
+    lareferenciaWidgetEmbedModule,
+  ],
+})
+export class MiComponente { }
 ```
+
+---
+
+## 3. Elegir e insertar el widget
+
+Debes elegir el widget pasando el tipo `[widgetType]` en el componente:
+- `"lrw"`: Para el widget que muestra las estadísticas del ítem.
+- `"lrhw"`: Para el widget dashboard que muestra las estadísticas del repositorio o Nodo.
+
+**Ejemplo de inserción:**
+```html
 <lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>
-o
+<!-- o -->
 <lib-lareferencia-widget-embed [widgetType]="'lrhw'"></lib-lareferencia-widget-embed>
 ```
-## Insertar el widget en la vista sencilla del ítem (Para usuarios dSpace)
-DSpace 7 ofrece la posibilidad de organizar el repositorio en colecciones de ítems regulares (como los de las versiones anteriores) e ítems de tipo entidad. Las plantillas para modificar la forma en la que se muestran los metadatos en su vista sencilla se encuentran en el directorio[temaHabilitado]/item-page/simple/item-types
 
-Si se quiere modificar la vista de la entidad de tipo publicación, el widget debe insertarse en el archivo 
-```
-item-page/simple/item-types/publication/publication.component.html
-```
+### Insertar en la vista sencilla del ítem (Para usuarios dSpace)
+Las plantillas para modificar la vista sencilla se encuentran en: `[temaHabilitado]/item-page/simple/item-types`.
 
-Si se quiere modificar la vista del ítem regular (los utilizados en las versiones de DSpace anteriores), el widget debe insertarse en el archivo 
-```
-item-page/simple/item-types/untyped-item/untyped-item.component.hml
-```
-Recuerda que para insertar el llamado al widget se debe colocar en el html la siguiente linea
-```
-<lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>
-```
-Por ejemplo, si se desea desplegar el widget luego del listado de autores, el html debe verse de la siguiente manera:
-```
-<ds-themed-metadata-representation-list class="ds-item-page-mixed-author-field"
-[parentItem]="object"
-[itemType]="'Person'"
-[metadataFields]="['dc.contributor.author', 'dc.creator']"
-[label]="'relationships.isAuthorOf' | translate">
+- **Para entidad tipo Publicación:** Editar `item-page/simple/item-types/publication/publication.component.html`.
+- **Para ítem regular (Untyped):** Editar `item-page/simple/item-types/untyped-item/untyped-item.component.html`.
+
+**Ejemplo (luego del listado de autores):**
+```html
+<ds-themed-metadata-representation-list 
+  class="ds-item-page-mixed-author-field"
+  [parentItem]="object"
+  [itemType]="'Person'"
+  [metadataFields]="['dc.contributor.author', 'dc.creator']"
+  [label]="'relationships.isAuthorOf' | translate">
 </ds-themed-metadata-representation-list>
 
 <lib-lareferencia-widget-embed [widgetType]="'lrw'"></lib-lareferencia-widget-embed>
-
-<ds-generic-item-page-field [item]="object"
-[fields]="['journal.title']"
-[label]="'item.page.journal-title'">
-</ds-generic-item-page-field>
 ```
 
-## Configurar el o los widgets
+---
 
-Dentro de la carpeta "assets" que se encuentra dentro del proyecto angular (dentro de /src), necesitas crear una carpeta y llamarla "data". Luego deberas descargar y colocar el archivo "widget.config.json" alli dentro.
+## 4. Configuración vía widget.config.json
 
-Descargar el archivo "widgetConfig.json" aquí.
-[Descargar](src/assets/data/widget.config.json)
+Dentro de la carpeta `src/assets`, crea una carpeta llamada `data` y coloca allí el archivo `widget.config.json`.
 
-En este archivo .json encontraras todos los parametros configurables para los widgets.
+[Descargar archivo base widgetConfig.json](src/assets/data/widget.config.json)
 
+---
 
-# Configurar 'lrw' widget
+## 5. Configurar 'lrw' widget (Estadísticas del ítem)
 
-Configurar parametros en widget.config.json 
-> Nota: Para configurar este widget debes editar unicamente los parametros dentro del objeto "lrw"
+Edita únicamente los parámetros dentro del objeto `"lrw"` en el JSON:
 
-1. El parametro "widget_url" contiene la url, donde debera ir la ultima version.
-La version tiene la forma X.Y.Z y debe ser actualizada en el parametro "widget_url"
-Por ejemplo:
-```
-cdn.jsdelivr.net/gh/lareferencia/lrw@X.Y.Z/dist/lrw.js
-```
-reemplazando X.Y.Z (por ejemplo 2.0.6) quedaria: 
-```
-https://cdn.jsdelivr.net/gh/lareferencia/lrw@2.0.6/dist/lrw.js
-```
-> Nota: solo debes modificar X.Y.Z luego de la @
-
-2. Donde se muestra [[expresion]] reemplazar quitando los [[]]. 
-Significado de cada parametro:
-  
-    - Nombre del nodo nacional:
-Nombre que aparecerá describiendo los eventos provenientes del nodo nacional. Esto debe ser indicado por el gestor del nodo nacional.
-
-    - Nombre del repositorio:
-Nombre que aparecerá describiendo los eventos del repositorio, debe ser corto para evitar problemas de visualización.
-
-    - country:
-ISO dos digitos del país de repositorio. Ejemplos: AR,BR,ES,UY
-
-    - Repository source:
-Identificador del repositorio, se forma con el prefijo OPENDOAR:: concatenado con el número identificatorio en OpenDOAR. Ejemplo: OPENDOAR::1234
-
-1. Configurar identifier_prefix, identifier_meta_field e identifier_regex
+1.  **widget_url**: URL del CDN. Reemplaza `X.Y.Z` por la versión deseada (ej. `2.0.6`).
+    ```
+    https://cdn.jsdelivr.net/gh/lareferencia/lrw@2.0.6/dist/lrw.js
+    ```
+2.  **identifier_prefix**: Valor consultado en `oai.cfg` o vía consulta `Identify`. Ej: `oai:repositorio.utn.ac.cr:20.500.13077/`.
+3.  **identifier_meta_field**: Generalmente `citation_abstract_html_url` (basado en `dc.identifier.uri`).
+4.  **identifier_regex**: Expresión regular para extraer el identificador local (ej: `https://hdl.handle.net/[0-9\\.]+/([0-9]+)/?`).
+5.  **Otros parámetros**: `scope_labels` (Nombres para Nodo y Repositorio), `country` (ISO 2 dígitos), y `repository_source` (id OpenDOAR).
 
 - DSpace le asigna a cada item depositado un "oai identifier".  Éste es un identificador único utilizado en las solicitudes OAI-PMH para extraer los metadatos del ítem. La sintaxis de dicho identificador consta de tres partes:
 
@@ -180,38 +169,31 @@ Ejemplo de configuración completa:
 
 ```
 
-# Configurar 'lrhw' widget.
-> Nota: Es posible colocar la configuracion necesaria directamente en el componente, a excepción del CDN, (ver al final de la seccion), en lugar de utilizar el archivo json de configuracion. En caso de no hacerlo esta forma, el widget por defecto utiliza la configuracion del archivo .json
 
-Configurar parametros en widget.config.json
+---
 
-> Nota: Para configurar este widget debes editar unicamente los parametros dentro del objeto "lrhw"
+## 6. Configurar 'lrhw' widget (Dashboard)
 
-1. El parametro "widget_url" contiene la url, donde debera ir la ultima version.
-La version tiene la forma X.Y.Z y debe ser actualizada en el parametro "widget_url"
-Por ejemplo:
+Edita únicamente los parámetros dentro del objeto `"lrhw"` en el JSON:
+
+1.  **widget_url**: URL del CDN (ej. `https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.0.8/dist/assets/chunks/historic-widget.js`).
+2.  **repositories_list**: Lista de repositorios con `label` y `value` (sourceid).
+3.  **default_repository**: Repositorio que se muestra por defecto.
+4.  **scope_labels**: Nombre del nodo nacional ("N").
+
+### Configuración directa en el componente (Alternativa)
+Puedes pasar la configuración directamente como inputs del componente, exceptuando la URL del CDN que debe estar en el JSON.
+
+```html
+<lib-lareferencia-widget-embed 
+    [widgetType]="'lrhw'" 
+    [node_name]="'Nombre Nodo'"
+    [repositories_list]="[{label:'Repo A', value:'opendoar::1234'}]"
+    [default_repository]="{label:'Repo A', value:'opendoar::1234'}"
+></lib-lareferencia-widget-embed>
 ```
-https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.0.8/dist/assets/chunks/historic-widget.js
-```
-reemplazando X.Y.Z (por ejemplo 1.0.8) quedaria: 
-```
-https://cdn.jsdelivr.net/gh/lareferencia/lrhw@1.0.8/dist/assets/chunks/historic-widget.js
-```
-> Nota: solo debes modificar X.Y.Z luego de la @
 
-2. Donde se muestra [[expresion]] reemplazar quitando los [[]]. 
-Significado de cada parametro:
-  
-    - repositories_list:
-Lista de repositorios que queremos exhibir en el dashboard, cada repositorio tiene un parametro "label" donde colocamos el nombre, y el parametro "value" donde colocamos el source, por ejemplo "opendoar::1329", en caso de querer mostrar solo un repositorio, colocar solo uno dentro del arreglo.
-
-    - default_repository:
-El dashboard posee un selector para cambiar de repositorios en tiempo real, en este parametro colocamos el repositorio por defecto, es decir el que se va a mostrar primero al entrar por primera vez. Por otro lado si tenemos solo 1 repositorio, colocarlo aqui y tambien en "repositories_list".
-
-    - scope_labels:
-El parametro "N" hace referencia al nombre del nodo nacional al que pertenecen los repositorios. Si estas utilizando este dashboard directamente para un nodo nacional en lugar de uno o mas repositorios, dejar el parametro como "Nodo Nacional".
-
-
+---
 Ejemplo de configuración completa:
 ```
 "lrhw": {
@@ -234,34 +216,12 @@ Ejemplo de configuración completa:
                 }
             }
         }
-
 ```
 
-### Colocar la configuracion directamente en el componente:
+## 7. Modificar sin re-compilar
 
-> Nota: Antes de realizar esta configuracion, asegurate de tener el archivo .json (ver mas arriba) para que el widget pueda acceder al CDN.
+Puedes realizar cambios en la configuración modificando el archivo `widget.config.json` tanto en:
+- `src/assets/data/widget.config.json` (para persistencia)
+- `dist/server/assets/data/widget.config.json` (para ver los cambios en tiempo real sin recompilar el bundle)
 
-1. widgetType: Nombre del widget, en este caso siempre lrhw
-2. node_name: Nombre del nodo al que pertenece el repositorio
-3. repositories_list: Array de objetos, obligatoriamente un label (nombre del repositorio) y un value (source del repositorio)
-4. default_repository: Objeto con un label y un value, igual que en repositories_list. El widget tiene un dropdown para mostrar la lista de repositorios, aqui se coloca el que quieres que sea por defecto, el mismo tambien debe estar incluido en el array de repositories_list, incluso aunque sea el unico.
-
-Ejemplo de configuracion:
-```
-
-<lib-lareferencia-widget-embed 
-    [widgetType]="'lrhw'" 
-    [node_name]="'name'"
-    [repositories_list]="[{label:'name', value:'value'}]"
-    [default_repository]="{label:'name', value:'value'}"
-></lib-lareferencia-widget-embed>
-
-```
-Vinculando estos datos con nuestro archivo .ts es posible realizar una configuracion dinamica del widget de repositorios.
-
-## Modificar el widget sin re-compilar
-
-Puedes realizar cambios en la configuracion de el o los widgets modificando el archivo widget.config.json. Para realizar dichos cambios sin tener que volver a compilar debes realizar los cambios en el archivo dentro de src/assets/data/widget.config.json y tambien dentro de la carpeta dist/server/assets/data/widget.config.json. Si no se aprecian los cambios, Puedes recargar el navegador o borrar el cache del navegador.
-
-
-
+Si no se aprecian los cambios, recarga el navegador o borra la caché.
