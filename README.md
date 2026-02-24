@@ -15,10 +15,11 @@ El primer paso es instalar el paquete `lareferencia-widget-embed` con el siguien
 
 Ejecutar dentro del directorio raíz del código fuente de angular (ej. `/dspace-angular`):
 ```bash
-npm install lareferencia-widget-embed
+npm install lareferencia-widget-embed DSpace 7 y 9)
+yarn install lareferencia-widget-embed (DSpace 8)
 ```
 
-> **Nota:** Si ves errores de dependencias puedes usar `npm install lareferencia-widget-embed --force`. Esta librería solo tiene como dependencias `@angular/core`, cualquier otro error probablemente sea de discrepancias en la versión de dSPACE.
+> **Nota:** Si ves errores de dependencias puedes usar `npm/yarn install lareferencia-widget-embed --force`. Esta librería solo tiene como dependencias `@angular/core`, cualquier otro error probablemente sea de discrepancias en la versión de dSPACE.
 > Al finalizar, deberías encontrar la carpeta `lareferencia-widget-embed` dentro de `node_modules`.
 
 ---
